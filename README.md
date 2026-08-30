@@ -21,3 +21,10 @@ python3 -m http.server 8000
 ```
 
 その後 `http://localhost:8000` にアクセスします。
+
+## ブランチ運用
+
+- `master` — 本番リリース用。常にリリース済みの安定版のみを置く。
+- `develop` — 開発統合用のデフォルトブランチ。issueブランチのマージ先。
+- `issue-<番号>-<内容>` — 開発時に `develop` から切る作業ブランチ（例: `issue-2-search-feature`）。作業後は `develop` へPRを出してマージする。
+- リリース時は `develop` → `master` へのPRを1本作成し、内容を確認してからマージする（1リリース = 1 PR）。
