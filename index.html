@@ -31,7 +31,11 @@
     </form>
 
     <div class="toolbar">
-      <div class="filters" role="group" aria-label="フィルター">
+      <div class="view-toggle" role="group" aria-label="表示切り替え">
+        <button class="view-btn active" data-view="list">リスト</button>
+        <button class="view-btn" data-view="calendar">カレンダー</button>
+      </div>
+      <div class="filters" id="filters" role="group" aria-label="フィルター">
         <button class="filter-btn active" data-filter="all">すべて</button>
         <button class="filter-btn" data-filter="active">未完了</button>
         <button class="filter-btn" data-filter="completed">完了済み</button>
@@ -39,9 +43,30 @@
       <button id="clear-completed" class="clear-btn">完了済みを削除</button>
     </div>
 
-    <ul id="todo-list" class="todo-list"></ul>
+    <section id="list-view">
+      <ul id="todo-list" class="todo-list"></ul>
+      <p id="empty-state" class="empty-state" hidden>タスクがありません</p>
+    </section>
 
-    <p id="empty-state" class="empty-state" hidden>タスクがありません</p>
+    <section id="calendar-view" hidden>
+      <div class="calendar-header">
+        <button id="calendar-prev" class="calendar-nav-btn" aria-label="前月">‹</button>
+        <div class="calendar-header-center">
+          <span id="calendar-label" class="calendar-label"></span>
+          <button id="calendar-today" class="calendar-today-btn">今日</button>
+        </div>
+        <button id="calendar-next" class="calendar-nav-btn" aria-label="次月">›</button>
+      </div>
+      <div class="calendar-weekdays">
+        <span>日</span><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span>
+      </div>
+      <div id="calendar-grid" class="calendar-grid"></div>
+
+      <div class="no-due-section">
+        <h2 class="no-due-heading">期限なし</h2>
+        <ul id="no-due-list" class="todo-list"></ul>
+      </div>
+    </section>
 
     <footer class="app-footer">
       <span id="items-left">0 件残り</span>
